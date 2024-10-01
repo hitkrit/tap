@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Tapalka Game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Адаптивность -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Telegram Web App API -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+    <!-- Верхняя панель -->
+    <header>
+        <div class="user-info">
+            <span id="user-name">Имя пользователя</span>
+            <div class="user-chests">
+                <span>TON: <span id="ton-coins">0</span></span>
+                <span>NOT: <span id="not-coins">0</span></span>
+                <span>DOGS: <span id="dogs-coins">0</span></span>
+            </div>
+        </div>
+        <div class="wallet-icon" onclick="connectWallet()">
+            <!-- Иконка кошелька, нарисованная кодом -->
+            <div class="wallet-shape"></div>
+        </div>
+    </header>
+
+    <!-- Главный контент -->
+    <main>
+        <div class="chests-container">
+            <div class="chest" id="ton-chest" onclick="openModal('TON')">
+                <div class="chest-lid"></div>
+                <div class="chest-box"></div>
+                <span>TON</span>
+            </div>
+            <div class="chest" id="not-chest" onclick="openModal('NOT')">
+                <div class="chest-lid"></div>
+                <div class="chest-box"></div>
+                <span>NOT</span>
+            </div>
+            <div class="chest" id="dogs-chest" onclick="openModal('DOGS')">
+                <div class="chest-lid"></div>
+                <div class="chest-box"></div>
+                <span>DOGS</span>
+            </div>
+        </div>
+    </main>
+
+    <!-- Нижняя навигация -->
+    <nav>
+        <div class="nav-button" onclick="navigate('home')">
+            <div class="icon home-icon"></div>
+            <span>Home</span>
+        </div>
+        <div class="nav-button" onclick="navigate('tasks')">
+            <div class="icon tasks-icon"></div>
+            <span>Tasks</span>
+        </div>
+        <div class="nav-button" onclick="navigate('friends')">
+            <div class="icon friends-icon"></div>
+            <span>Friends</span>
+        </div>
+        <div class="nav-button" onclick="navigate('leaderboard')">
+            <div class="icon leaderboard-icon"></div>
+            <span>Leaderboard</span>
+        </div>
+        <div class="nav-button" onclick="navigate('airdrop')">
+            <div class="icon airdrop-icon"></div>
+            <span>Airdrop</span>
+        </div>
+    </nav>
+
+    <!-- Модальное окно -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <div class="modal-chest-container">
+                <div class="golden-circle">
+                    <div class="modal-chest" id="modal-chest">
+                        <!-- Сундук в модальном окне -->
+                        <div class="chest-lid"></div>
+                        <div class="chest-box"></div>
+                        <span id="modal-chest-name">TON</span>
+                    </div>
+                </div>
+                <div class="coin-counter">
+                    <span id="modal-coin-count">0</span> / <span id="modal-coin-max">10M</span>
+                </div>
+                <div class="boost-button" onclick="boost()">
+                    <div class="rocket"></div>
+                    <span>Boost</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
